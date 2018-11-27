@@ -31,8 +31,14 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		// have each algorithm sort a copy of the vector
 		// making the copy can get expensive but it is not part of the time
 		for(size_t algo = 0; algo < algorithms.size(); algo++) {
-			times[algo].push_back(
-			    algorithms[algo].get().timeAlgorithm(trialVector, std::less<>{}));
+			// alternate the direction of the sort each trial
+			if(t % 2) {
+				times[algo].push_back(algorithms[algo].get().timeAlgorithm(
+				    trialVector, std::less<>{}));
+			} else {
+				times[algo].push_back(algorithms[algo].get().timeAlgorithm(
+				    trialVector, std::greater<>{}));
+			}
 		}
 	}
 	// disply results;
