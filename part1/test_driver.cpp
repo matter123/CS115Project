@@ -45,9 +45,9 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		    std::accumulate(times[algo].begin(), times[algo].end(),
 		                    std::chrono::nanoseconds{}) /
 		    trials;
-		size_t compCount =
-		    std::accumulate(comparisons[algo].begin(), comparisons[algo].end(), 0) /
-		    trials;
+		size_t compCount = std::accumulate(comparisons[algo].begin(),
+		                                   comparisons[algo].end(), size_t{}) /
+		                   trials;
 		std::chrono::duration<long double, std::milli> time = avgTime;
 		std::cout << algorithms[algo].get().getName() << "\t" << arraySize << "\t"
 		          << time.count() << "\t" << compCount << std::endl;
