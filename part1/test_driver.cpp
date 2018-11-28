@@ -3,6 +3,7 @@
 #include <cmath>
 #include <ctime>
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include "compare_wrapper.h"
@@ -49,7 +50,9 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		                                   comparisons[algo].end(), size_t{}) /
 		                   trials;
 		std::chrono::duration<long double, std::milli> time = avgTime;
-		std::cout << algorithms[algo].get().getName() << "\t" << arraySize << "\t"
-		          << time.count() << "\t" << compCount << std::endl;
+		std::cout << algorithms[algo].get().getName() << "\t" << std::setw(5)
+		          << arraySize << "\t" << std::setprecision(7) << std::setw(12)
+		          << std::fixed << time.count() << "\t" << std::setw(12) << compCount
+		          << std::endl;
 	}
 }
