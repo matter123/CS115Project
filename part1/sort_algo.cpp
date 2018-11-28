@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <algorithm>
+#include <iostream>
 #include <iterator>
 
 SortAlgorithm::SortAlgorithm(std::string _name, FunctionType func)
@@ -14,6 +15,13 @@ std::chrono::nanoseconds SortAlgorithm::timeAlgorithm(std::vector<int> arr, Comp
 	auto begin = std::chrono::high_resolution_clock::now();
 	function(arr, c);
 	auto end = std::chrono::high_resolution_clock::now();
-	assert(std::is_sorted(std::begin(arr), std::end(arr), c));
+	auto sorted = std::is_sorted(std::begin(arr), std::end(arr), c);
+	if(!sorted) {
+		std::cerr << name << ": ";
+		std::cerr << (c(1, 0) ? " > " : " < ");
+		for(auto elem : arr) { std::cerr << elem << " "; }
+		std::cerr << std::endl;
+		assert(sorted);
+	}
 	return end - begin;
 }
