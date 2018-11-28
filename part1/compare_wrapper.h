@@ -2,20 +2,21 @@
 #define COMPARE_WRAPPER_H
 
 #include <cstddef>
+#include <functional>
 #include <utility>
 
-template <class Compare>
+template <class T = int>
 class CompareWrapper {
 	size_t comparisons;
-	Compare cmp;
+	std::function<bool(T, T)> cmp;
 
   public:
-	CompareWrapper(Compare c) : cmp(c), comparisons(0) = default;
-	template <class T, class U>
-	constexpr auto operator()(T &&lhs, U &&rhs)
-	    -> decltype(cmp(std::forward<T>(lhs), std::forward<U>(rhs))) {
+	CompareWrapper() = default;
+	template <class Compare>
+	CompareWrapper(Compare c) : cmp(c), comparisons(0){};
+	constexpr bool operator()(T lhs, T rhs) {
 		++comparisons;
-		return cmp(std::forward<T>(lhs), std::forward<U>(rhs));
+		return cmp(std::forward<T>(lhs), std::forward<T>(rhs));
 	}
 	size_t getComparisons() { return comparisons; }
 };
