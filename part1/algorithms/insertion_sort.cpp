@@ -10,7 +10,7 @@ void insertionSort(vector<int> &list, SortAlgorithm::Compare cmp) {
 		key = list.at(i);
 		j = i-1;
 
-		while (j >=0 && cmp(list.at(j), key)) {
+		while (j >=0 && !cmp(list.at(j), key)) {
 			list.at(j+1) = list.at(j);
 			j--;
 		}
