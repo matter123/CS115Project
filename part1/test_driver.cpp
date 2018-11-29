@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <random>
 #include "compare_wrapper.h"
 
@@ -16,6 +17,8 @@ void TestDriver::registerSortAlgorithm(SortAlgorithm &algo) {
 void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 
 	std::mt19937 rand{(unsigned int)time(nullptr)};
+	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
+	                                       std::numeric_limits<int>::max()};
 	std::vector<std::vector<std::chrono::nanoseconds>> times(algorithms.size());
 	std::vector<std::vector<size_t>> comparisons(algorithms.size());
 	for(size_t t = 0; t < trials; t++) {
@@ -25,7 +28,7 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		// construct a test vector and fill with random numbers
 		std::vector<int> trialVector;
 		trialVector.reserve(arraySize);
-		for(size_t s = 0; s < arraySize; s++) { trialVector.push_back(rand()); }
+		for(size_t s = 0; s < arraySize; s++) { trialVector.push_back(uid(rand)); }
 		// have each algorithm sort a copy of the vector
 		// making the copy can get expensive but it is not part of the time
 		for(size_t algo = 0; algo < algorithms.size(); algo++) {
