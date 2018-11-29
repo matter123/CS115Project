@@ -3,14 +3,14 @@
 
 #include <functional>
 #include <vector>
-#include "sort_algo.h"
+#include "in_set.h"
 
 
 class TestDriver {
-	static std::vector<std::reference_wrapper<SortAlgorithm>> algorithms;
+	static std::vector<std::reference_wrapper<InSetAlgorithm>> algorithms;
 
   public:
-	static void registerSortAlgorithm(SortAlgorithm &);
+	static void registerInSetAlgorithm(InSetAlgorithm &);
 	static void testAlgorithms(double arraySizeExp, size_t trials);
 };
 

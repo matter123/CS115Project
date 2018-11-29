@@ -16,7 +16,8 @@ class InSetAlgorithm {
 
   public:
 	InSetAlgorithm(std::string name, FunctionType func);
-	std::chrono::nanoseconds timeAlgorithm(std::vector<int>, int, Compare);
+	std::chrono::nanoseconds timeAlgorithm(std::vector<int>, int, Compare,
+	                                       bool &result);
 	std::string &getName() { return name; }
 };
 #endif
