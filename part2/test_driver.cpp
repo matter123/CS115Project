@@ -1,5 +1,6 @@
 #include "test_driver.h"
 #include <cstdlib>
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include "compare_wrapper.h"
@@ -26,11 +27,11 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		set.reserve(arraySize);
 		for(size_t s = 0; s < arraySize; s++) { set.push_back(uid(rand)); }
 		int value;
-		if(choice(rand)) {
+		if(choice(rand) || set.size() <= 2) {
 			// most likely not a sum of two numbers in the set
 			value = uid(rand);
 		} else {
-			std::uniform_int_distribution<int> pick{0, arraySize - 1};
+			std::uniform_int_distribution<int> pick(0, arraySize - 1);
 			auto first = pick(rand);
 			auto second = pick(rand);
 			while(first == second) { second = pick(rand); }
@@ -40,14 +41,14 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		for(size_t algo = 0; algo < algorithms.size(); algo++) {
 			bool result;
 			CompareWrapper<int> cmp;
-			times[algo].push_back(
-			    algorithms[algo].get().timeAlgorithm(set, value, cmp, result));
+			times[algo].push_back(algorithms[algo].get().timeAlgorithm(
+			    set, value, std::ref(cmp), result));
 			comparisons[algo].push_back(cmp.getComparisons());
 			results.push_back(result);
 		}
 		// confirm all algorithms got the same result
 		if(!std::all_of(results.begin(), results.end(),
-		                [&](auto v) { v == *results.begin() })) {
+		                [&](auto v) { return v == *results.begin(); })) {
 			std::cerr << "inconsistent results" << std::endl;
 			for(size_t algo = 0; algo < algorithms.size(); algo++) {
 				std::cerr << algorithms[algo].get().getName() << "\t"
@@ -56,3 +57,20 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 			}
 		}
 	}
+	// disply results;
+	size_t arraySize = std::pow(2, arraySizeExp);
+	for(size_t algo = 0; algo < algorithms.size(); algo++) {
+		std::chrono::nanoseconds avgTime =
+		    std::accumulate(times[algo].begin(), times[algo].end(),
+		                    std::chrono::nanoseconds{}) /
+		    trials;
+		size_t compCount = std::accumulate(comparisons[algo].begin(),
+		                                   comparisons[algo].end(), size_t{}) /
+		                   trials;
+		std::chrono::duration<long double, std::milli> time = avgTime;
+		std::cout << algorithms[algo].get().getName() << "\t" << std::setw(5)
+		          << arraySize << "\t" << std::setprecision(7) << std::setw(12)
+		          << std::fixed << time.count() << "\t" << std::setw(12) << compCount
+		          << std::endl;
+	}
+}

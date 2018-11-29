@@ -8,7 +8,7 @@ class InSetAlgorithm {
   public:
 	// Compare is spaceship operator +: lhs > rhs -: lhs < rhs 0: lhs == rhs
 	using Compare = std::function<int(int, int)>;
-	using FunctionType = std::function<void(std::vector<int> &, int, Compare)>;
+	using FunctionType = std::function<bool(std::vector<int> &, int, Compare)>;
 
   private:
 	std::string name;

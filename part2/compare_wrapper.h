@@ -7,7 +7,7 @@
 
 template <class T = int>
 class CompareWrapper {
-	size_t comparisons;
+	size_t comparisons{0};
 
   public:
 	CompareWrapper() = default;
