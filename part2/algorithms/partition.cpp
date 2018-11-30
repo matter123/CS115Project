@@ -1,6 +1,6 @@
 #include <utility>
 #include "../in_set.h"
-bool matthew1(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
+bool partition(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	using std::swap;
 	if(arr.size() < 2) { return false; }
 	auto mid = val / 2;
@@ -58,4 +58,4 @@ bool matthew1(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm Matthew1{"matthew(1)", matthew1};
+InSetAlgorithm Partition{"partition", partition};

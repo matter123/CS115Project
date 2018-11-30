@@ -1,6 +1,6 @@
 #include <utility>
 #include "../in_set.h"
-bool matthew3(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
+bool sorted(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	using std::swap;
 	if(arr.size() < 2) { return false; }
 	auto mid = val / 2;
@@ -23,4 +23,4 @@ bool matthew3(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm Matthew3{"matthew(3)", matthew3};
+InSetAlgorithm Sorted{"sorted", sorted};

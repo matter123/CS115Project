@@ -1,6 +1,6 @@
 #include <utility>
 #include "../in_set.h"
-bool matthew2(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
+bool partThenSort(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	using std::swap;
 	if(arr.size() < 2) { return false; }
 	auto mid = val / 2;
@@ -67,4 +67,4 @@ bool matthew2(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm Matthew2{"matthew(2)", matthew2};
+InSetAlgorithm PartThenSort{"partThenSort", partThenSort};
