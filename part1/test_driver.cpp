@@ -11,10 +11,27 @@
 
 std::vector<std::reference_wrapper<SortAlgorithm>> TestDriver::algorithms{};
 
+
 void TestDriver::registerSortAlgorithm(SortAlgorithm &algo) {
 	TestDriver::algorithms.emplace_back(algo);
 }
-void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
+
+void TestDriver::sortAlgorithms() {
+	std::sort(algorithms.begin(), algorithms.end(), [](auto lhs, auto rhs) {
+		return lhs.get().getName() < return rhs.get().getName()
+	});
+}
+
+void TestDriver::randomNumber(std::vector<int> &arr, size_t size) {
+	std::mt19937 rand{(unsigned int)time(nullptr)};
+	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
+	                                       std::numeric_limits<int>::max()};
+	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
+}
+
+
+template <class Generator>
+void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g) {
 
 	std::mt19937 rand{(unsigned int)time(nullptr)};
 	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
@@ -27,8 +44,7 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		if(rand() % 2) { arraySize += 1; }
 		// construct a test vector and fill with random numbers
 		std::vector<int> trialVector;
-		trialVector.reserve(arraySize);
-		for(size_t s = 0; s < arraySize; s++) { trialVector.push_back(uid(rand)); }
+		g(trialVector, arraySize);
 		// have each algorithm sort a copy of the vector
 		// making the copy can get expensive but it is not part of the time
 		for(size_t algo = 0; algo < algorithms.size(); algo++) {
