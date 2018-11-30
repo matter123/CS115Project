@@ -11,7 +11,7 @@ bool sorted(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	// sort in ascending order
 	std::sort(first, last, [&](auto a, auto b) { return cmp(a, b) <= 0; });
 	--last;
-	while(first != last) {
+	while(first <= last) {
 		auto compare = cmp(*first + *last, val);
 		if(compare == 0) { return true; }
 		if(compare > 0) {
@@ -23,4 +23,4 @@ bool sorted(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm Sorted{"sorted", sorted};
+InSetAlgorithm Sorted{"sorted  ", sorted};
