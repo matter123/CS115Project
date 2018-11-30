@@ -54,4 +54,4 @@ bool getLucky(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm GetLucky{"getLucky", getLucky};
+// InSetAlgorithm GetLucky{"getLucky", getLucky};
