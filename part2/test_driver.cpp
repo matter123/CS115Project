@@ -13,8 +13,8 @@ void TestDriver::registerInSetAlgorithm(InSetAlgorithm &algo) {
 
 void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 	std::mt19937 rand{(unsigned int)time(nullptr)};
-	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
-	                                       std::numeric_limits<int>::max()};
+	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min() / 2,
+	                                       std::numeric_limits<int>::max() / 2};
 	std::uniform_int_distribution<int> choice{0, 1};
 	std::vector<std::vector<std::chrono::nanoseconds>> times(algorithms.size());
 	std::vector<std::vector<size_t>> comparisons(algorithms.size());
@@ -50,11 +50,13 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
 		if(!std::all_of(results.begin(), results.end(),
 		                [&](auto v) { return v == *results.begin(); })) {
 			std::cerr << "inconsistent results" << std::endl;
+			for(auto s : set) { std::cerr << s << " "; }
+			std::cerr << ", value:" << value << std::endl;
 			for(size_t algo = 0; algo < algorithms.size(); algo++) {
 				std::cerr << algorithms[algo].get().getName() << "\t"
-				          << results[algo] << std::endl;
-				std::abort();
+				          << std::boolalpha << results[algo] << std::endl;
 			}
+			std::abort();
 		}
 	}
 	// disply results;
