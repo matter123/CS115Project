@@ -23,22 +23,21 @@ void TestDriver::sortAlgorithms() {
 		          return lhs.get().getName() < rhs.get().getName();
 	          });
 }
-template <class Compare>
-void TestDriver::randomNumber(std::vector<int> &arr, size_t size, Compare c) {
+void TestDriver::randomNumber(std::vector<int> &arr, size_t size,
+                              SortAlgorithm::Compare c) {
 	std::mt19937 rand{(unsigned int)time(nullptr)};
 	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
 	                                       std::numeric_limits<int>::max()};
 	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
 }
-template <class Compare>
-void TestDriver::partiallySorted(std::vector<int> &arr, size_t size, Compare c) {
+void TestDriver::partiallySorted(std::vector<int> &arr, size_t size,
+                                 SortAlgorithm::Compare c) {
 	using std::swap;
 	TestDriver::randomNumber(arr, size, c);
-	std::sort(arr.begin(), arr.begin() + (arr.end() - arr.begin()) / 2, c);
+	std::sort(arr.begin(), arr.begin() + size / 2, c);
 }
 
-template <class Compare>
-void TestDriver::sorted(std::vector<int> &arr, size_t size, Compare c) {
+void TestDriver::sorted(std::vector<int> &arr, size_t size, SortAlgorithm::Compare c) {
 
 	std::mt19937 rand{(unsigned int)time(nullptr)};
 	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
@@ -47,9 +46,7 @@ void TestDriver::sorted(std::vector<int> &arr, size_t size, Compare c) {
 	std::sort(arr.begin(), arr.end(), c);
 }
 
-template <class Generator>
 void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g) {
-
 	std::mt19937 rand{(unsigned int)time(nullptr)};
 	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
 	                                       std::numeric_limits<int>::max()};

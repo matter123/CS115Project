@@ -8,19 +8,17 @@
 
 class TestDriver {
 	static std::vector<std::reference_wrapper<SortAlgorithm>> algorithms;
+	using Generator =
+	    std::function<void(std::vector<int> &, size_t, SortAlgorithm::Compare)>;
 
   public:
 	static void registerSortAlgorithm(SortAlgorithm &);
 	static void sortAlgorithms();
-	template <class Generator>
 	static void testAlgorithms(double arraySizeExp, size_t trials, Generator g);
 	// number source
-	template <class Compare>
-	static void randomNumber(std::vector<int> &, size_t, Compare c);
-	template <class Compare>
-	static void partiallySorted(std::vector<int> &, size_t, Compare c);
-	template <class Compare>
-	static void sorted(std::vector<int> &, size_t, Compare c);
+	static void randomNumber(std::vector<int> &, size_t, SortAlgorithm::Compare c);
+	static void partiallySorted(std::vector<int> &, size_t, SortAlgorithm::Compare c);
+	static void sorted(std::vector<int> &, size_t, SortAlgorithm::Compare c);
 };
 
 #endif
