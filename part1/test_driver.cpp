@@ -38,12 +38,8 @@ void TestDriver::partiallySorted(std::vector<int> &arr, size_t size, Compare c) 
 }
 
 template <class Compare>
-void TestDriver::sorted(std::vector<int> &arr, size_t size, Compare c) {
-
-	std::mt19937 rand{(unsigned int)time(nullptr)};
-	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
-	                                       std::numeric_limits<int>::max()};
-	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
+void TestDriver::sorted(std::vector<int> &arr, size_t size, Compare c){
+	randomNumber(arr, size, c);
 	std::sort(arr.begin(), arr.end(), c);
 }
 
