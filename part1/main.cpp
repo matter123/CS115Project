@@ -25,7 +25,9 @@ int main(int argc, char const *argv[]) {
 	TestDriver::sortAlgorithms();
 	std::cout << "unsorted vector";
 	runTests(TestDriver::randomNumber);
+	std::cout << "partially sorted vector";
 	runTests(TestDriver::partiallySorted);
+	std::cout << "sorted vector";
 	runTests(TestDriver::sorted);
 	return 0;
 }

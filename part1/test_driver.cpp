@@ -23,8 +23,8 @@ void TestDriver::sortAlgorithms() {
 		          return lhs.get().getName() < rhs.get().getName();
 	          });
 }
-
-void TestDriver::randomNumber(std::vector<int> &arr, size_t size) {
+template <class Compare>
+void TestDriver::randomNumber(std::vector<int> &arr, size_t size, Compare c) {
 	std::mt19937 rand{(unsigned int)time(nullptr)};
 	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
 	                                       std::numeric_limits<int>::max()};
@@ -45,9 +45,13 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g)
 		// around half of the trials will have an odd number of elements
 		if(rand() % 2) { arraySize += 1; }
 		// construct a test vector and fill with random numbers
+		CompareWrapper<int> cmp{};
+		// alternate the direction of the sort each trial
+		cmp = t % 2 ? CompareWrapper<int>{std::less<>{}}
+		            : CompareWrapper<int>{std::greater<>{}};
 		std::vector<int> trialVector;
 		trialVector.reserve(arraySize);
-		g(trialVector, arraySize);
+		g(trialVector, arraySize, cmp);
 		// have each algorithm sort a copy of the vector
 		// making the copy can get expensive but it is not part of the time
 		for(size_t algo = 0; algo < algorithms.size(); algo++) {
