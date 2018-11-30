@@ -31,6 +31,16 @@ void TestDriver::randomNumber(std::vector<int> &arr, size_t size, Compare c) {
 	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
 }
 
+template <class Compare>
+void TestDriver::sorted(std::vector<int> &arr, size_t size, Compare c){
+
+	std::mt19937 rand{(unsigned int)time(nullptr)};
+	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
+	                                       std::numeric_limits<int>::max()};
+	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
+	std::sort(arr.begin(), arr.end(), c);
+
+}
 
 template <class Generator>
 void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g) {
