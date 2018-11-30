@@ -17,9 +17,11 @@ void TestDriver::registerSortAlgorithm(SortAlgorithm &algo) {
 }
 
 void TestDriver::sortAlgorithms() {
-	std::sort(algorithms.begin(), algorithms.end(), [](auto lhs, auto rhs) {
-		return lhs.get().getName() < return rhs.get().getName()
-	});
+	std::sort(algorithms.begin(), algorithms.end(),
+	          [](std::reference_wrapper<SortAlgorithm> lhs,
+	             std::reference_wrapper<SortAlgorithm> rhs) {
+		          return lhs.get().getName() < rhs.get().getName();
+	          });
 }
 
 void TestDriver::randomNumber(std::vector<int> &arr, size_t size) {
@@ -44,6 +46,7 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g)
 		if(rand() % 2) { arraySize += 1; }
 		// construct a test vector and fill with random numbers
 		std::vector<int> trialVector;
+		trialVector.reserve(arraySize);
 		g(trialVector, arraySize);
 		// have each algorithm sort a copy of the vector
 		// making the copy can get expensive but it is not part of the time
