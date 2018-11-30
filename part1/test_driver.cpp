@@ -30,7 +30,12 @@ void TestDriver::randomNumber(std::vector<int> &arr, size_t size, Compare c) {
 	                                       std::numeric_limits<int>::max()};
 	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
 }
-
+template <class Compare>
+void TestDriver::partiallySorted(std::vector<int> &arr, size_t size, Compare c) {
+	using std::swap;
+	TestDriver::randomNumber(arr, size, c);
+	std::sort(arr.begin(), arr.end(), c);
+}
 
 template <class Generator>
 void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g) {
