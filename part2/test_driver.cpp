@@ -4,6 +4,7 @@
 #include <iostream>
 #include <random>
 #include "compare_wrapper.h"
+#include <algorithm>
 
 std::vector<std::reference_wrapper<InSetAlgorithm>> TestDriver::algorithms{};
 

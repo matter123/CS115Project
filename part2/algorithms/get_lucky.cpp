@@ -1,6 +1,7 @@
 #include <utility>
 #include "../in_set.h"
 
+#include <algorithm>
 
 bool getLuckyPartition(std::vector<int> &arr, size_t first, size_t last, int pivot,
                        int val, InSetAlgorithm::Compare cmp) {
