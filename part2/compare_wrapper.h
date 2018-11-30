@@ -11,6 +11,7 @@ class CompareWrapper {
 
   public:
 	CompareWrapper() = default;
+	// Compare is spaceship operator +: lhs > rhs -: lhs < rhs 0: lhs == rhs
 	constexpr int operator()(T lhs, T rhs) {
 		++comparisons;
 		return lhs > rhs ? 1 : rhs > lhs ? -1 : 0;
