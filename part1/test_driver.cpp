@@ -34,7 +34,7 @@ template <class Compare>
 void TestDriver::partiallySorted(std::vector<int> &arr, size_t size, Compare c) {
 	using std::swap;
 	TestDriver::randomNumber(arr, size, c);
-	std::sort(arr.begin(), arr.end(), c);
+	std::sort(arr.begin(), arr.begin() + (arr.end() - arr.begin()) / 2, c);
 }
 
 template <class Compare>
