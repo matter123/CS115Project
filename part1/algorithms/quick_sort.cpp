@@ -3,6 +3,11 @@
 #include <utility>
 #include "../sort_algo.h"
 
+/*
+template<class RandomIt>
+void quickSortPartition(RandomIt first, RandomIt)
+*/
+
 template <class RandomIt>
 void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 	using std::swap;
@@ -26,7 +31,7 @@ void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 }
 
 void quickSort(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
-	quickSortImpl(arr.begin(), arr.end(), cmp);
+	quickSortImpl(arr.begin(), arr.end() - 1, cmp);
 }
 
 SortAlgorithm QuickSort{"quick sort", quickSort};
