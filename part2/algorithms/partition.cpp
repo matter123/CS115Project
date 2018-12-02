@@ -58,4 +58,4 @@ bool partition(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm Partition{"partition", partition};
+// InSetAlgorithm Partition{"partition", partition};
