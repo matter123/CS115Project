@@ -3,31 +3,41 @@
 #include <utility>
 #include "../sort_algo.h"
 
-/*
-template<class RandomIt>
-void quickSortPartition(RandomIt first, RandomIt)
-*/
+
+// Fat partition scheme
+template <class RandomIt>
+void quickSortPartition(RandomIt first, RandomIt last, int pivot,
+                        SortAlgorithm::Compare cmp, RandomIt &p1, RandomIt &p2) {
+	using std::swap;
+	while(*first != pivot || *last != pivot) {
+		while(first != last && cmp(*first, pivot)) { ++first; }
+		while(first != last && cmp(pivot, *last)) { --last; }
+		if(*first != pivot || *last != pivot) { swap(*first, *last); }
+	}
+	p1 = first;
+	p2 = last;
+}
 
 template <class RandomIt>
 void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 	using std::swap;
-	auto hi = last - 1; // quicksort is inclusive
-	if(hi <= first) { return; }
+	if(last - first < 2) { return; }
 	if(last - first == 2) {
-		if(cmp(*hi, *first)) { swap(*first, *hi); }
+		if(cmp(*last, *first)) { swap(*first, *last); }
 		return;
 	}
 	// find median using median of three
-	auto mid = first + (hi - first) / 2;
+	auto mid = first + (last - first) / 2;
 	if(cmp(*mid, *first)) { swap(*mid, *first); }
-	if(cmp(*hi, *first)) { swap(*hi, *first); }
-	if(cmp(*mid, *hi)) { swap(*mid, *hi); }
+	if(cmp(*last, *first)) { swap(*last, *first); }
+	if(cmp(*mid, *last)) { swap(*mid, *last); }
 	//
-	auto pivotValue = *hi;
-	auto pivot =
-	    std::partition(first, last, [&](auto v) { return !cmp(pivotValue, v); });
-	quickSortImpl(first, pivot, cmp);
-	quickSortImpl(pivot, last, cmp);
+	auto pivotValue = *last;
+	auto pivot1 = first;
+	auto pivot2 = last;
+	quickSortPartition(first, last, pivotValue, cmp, pivot1, pivot2);
+	quickSortImpl(first, pivot1, cmp);
+	quickSortImpl(pivot2, last, cmp);
 }
 
 void quickSort(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
