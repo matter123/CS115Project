@@ -45,29 +45,9 @@ void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp,
 		return;
 	}
 	auto pivotValue = *pivotfunc(first, last, cmp);
-	auto pivot1 = first;
-	auto pivot2 = last;
 	auto pivot = quickSortPartition(first, last, pivotValue, cmp);
-	assert(pivot1 != pivot2);
 	quickSortImpl(first, pivot, cmp, pivotfunc);
-	if(!std::is_sorted(first, pivot1, cmp)) {
-		std::cerr << "left part not sorted" << std::endl;
-		std::cerr << "pivot is " << pivotValue << std::endl;
-		while(first != pivot1) { std::cerr << *first++ << " "; }
-		std::cerr << std::endl;
-		std::cerr << "rest " << std::endl;
-		while(first != last) { std::cerr << *first++ << " "; }
-		std::cerr << std::endl;
-		std::abort();
-	}
 	quickSortImpl(pivot + 1, last, cmp, pivotfunc);
-	if(!std::is_sorted(pivot2, last, cmp)) {
-		std::cerr << "right part not sorted" << std::endl;
-		std::cerr << "pivot is " << pivotValue << std::endl;
-		while(pivot2 != last) { std::cerr << *pivot2++ << " "; }
-		std::cerr << std::endl;
-		std::abort();
-	}
 }
 /*
 void quickSortMoT(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
