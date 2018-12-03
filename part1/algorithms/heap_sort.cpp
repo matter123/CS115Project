@@ -27,8 +27,8 @@ void heapify(int i, vector<int> &Arr, SortAlgorithm::Compare cmp) {
 void heapSort(vector<int> &Arr, SortAlgorithm::Compare cmp) {	
 	Arr.insert (Arr.begin(), 0);
 
-	sizze = Arr.sizze()-1;
-	for (sizze_t i = Arr.sizze()/2; i >= 1; i--) {
+	sizze = Arr.size()-1;
+	for (size_t i = Arr.size()/2; i >= 1; i--) {
 		heapify(i, Arr, cmp);
 	}
 	for (int i = sizze; i >= 2; i--) {
