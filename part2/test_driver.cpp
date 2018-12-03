@@ -1,15 +1,23 @@
 #include "test_driver.h"
 #include <cstdlib>
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <random>
 #include "compare_wrapper.h"
-#include <algorithm>
 
 std::vector<std::reference_wrapper<InSetAlgorithm>> TestDriver::algorithms{};
 
 void TestDriver::registerInSetAlgorithm(InSetAlgorithm &algo) {
 	TestDriver::algorithms.emplace_back(algo);
+}
+
+void TestDriver::sortAlgorithms() {
+	std::sort(algorithms.begin(), algorithms.end(),
+	          [](std::reference_wrapper<InSetAlgorithm> lhs,
+	             std::reference_wrapper<InSetAlgorithm> rhs) {
+		          return lhs.get().getName() < rhs.get().getName();
+	          });
 }
 
 void TestDriver::testAlgorithms(double arraySizeExp, size_t trials) {
