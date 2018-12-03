@@ -11,6 +11,7 @@ class TestDriver {
 
   public:
 	static void registerInSetAlgorithm(InSetAlgorithm &);
+	static void sortAlgorithms();
 	static void testAlgorithms(double arraySizeExp, size_t trials);
 };
 

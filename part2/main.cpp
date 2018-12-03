@@ -1,6 +1,7 @@
 #include "test_driver.h"
 
 int main(int argc, char const *argv[]) {
+	TestDriver::sortAlgorithms();
 	TestDriver::testAlgorithms(0x0, 20);  // N=2^0
 	TestDriver::testAlgorithms(0x1, 20);  // N=2^1
 	TestDriver::testAlgorithms(0x2, 20);  // N=2^2
