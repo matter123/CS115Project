@@ -84,7 +84,7 @@ void TestDriver::testAlgorithms(double arraySizeExp, size_t trials, Generator g)
 		                                   comparisons[algo].end(), size_t{}) /
 		                   trials;
 		std::chrono::duration<long double, std::milli> time = avgTime;
-		std::cout << algorithms[algo].get().getName() << "\t" << std::setw(5)
+		std::cout << algorithms[algo].get().getName() << "\t" << std::setw(8)
 		          << arraySize << "\t" << std::setprecision(7) << std::setw(12)
 		          << std::fixed << time.count() << "\t" << std::setw(12) << compCount
 		          << std::endl;
