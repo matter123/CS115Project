@@ -20,14 +20,6 @@ void runTests(Generator g) {
 	TestDriver::testAlgorithms(0xE, 20, g);  // N=2^14
 	TestDriver::testAlgorithms(0xF, 20, g);  // N=2^15
 	TestDriver::testAlgorithms(0x10, 20, g); // N=2^16
-	TestDriver::testAlgorithms(0x11, 20, g); // N=2^17
-	TestDriver::testAlgorithms(0x12, 20, g); // N=2^18
-	TestDriver::testAlgorithms(0x13, 20, g); // N=2^19
-	TestDriver::testAlgorithms(0x14, 20, g); // N=2^20
-	TestDriver::testAlgorithms(0x15, 20, g); // N=2^21
-	TestDriver::testAlgorithms(0x16, 20, g); // N=2^22
-	TestDriver::testAlgorithms(0x17, 20, g); // N=2^23
-	TestDriver::testAlgorithms(0x18, 20, g); // N=2^24
 }
 
 int main(int argc, char const *argv[]) {

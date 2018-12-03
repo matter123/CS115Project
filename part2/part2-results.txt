@@ -1,0 +1,85 @@
+brute force	    1	   0.0002200	           0
+part then sort	    1	   0.0003520	           1
+partition	    1	   0.0002580	           1
+sort then part	    1	   0.0003020	           1
+sorted  	    1	   0.0002860	           1
+brute force	    2	   0.0002370	           2
+part then sort	    2	   0.0005000	           5
+partition	    2	   0.0003520	           4
+sort then part	    2	   0.0004620	           5
+sorted  	    2	   0.0003820	           4
+brute force	    4	   0.0003180	           6
+part then sort	    4	   0.0008450	          13
+partition	    4	   0.0005190	           8
+sort then part	    4	   0.0006520	          12
+sorted  	    4	   0.0006080	          11
+brute force	    8	   0.0005330	          25
+part then sort	    8	   0.0013850	          33
+partition	    8	   0.0008400	          25
+sort then part	    8	   0.0011210	          32
+sorted  	    8	   0.0010490	          30
+brute force	   16	   0.0012960	         103
+part then sort	   16	   0.0026530	          88
+partition	   16	   0.0014920	          75
+sort then part	   16	   0.0026240	          98
+sorted  	   16	   0.0026020	          95
+brute force	   32	   0.0034520	         319
+part then sort	   32	   0.0066380	         222
+partition	   32	   0.0029880	         189
+sort then part	   32	   0.0056220	         225
+sorted  	   32	   0.0054050	         221
+brute force	   64	   0.0070750	        1527
+part then sort	   64	   0.0064780	         535
+partition	   64	   0.0038590	         685
+sort then part	   64	   0.0065270	         526
+sorted  	   64	   0.0064590	         521
+brute force	  128	   0.0126930	        6644
+part then sort	  128	   0.0060830	        1235
+partition	  128	   0.0065370	        3163
+sort then part	  128	   0.0057950	        1179
+sorted  	  128	   0.0055730	        1173
+brute force	  256	   0.0507840	       27345
+part then sort	  256	   0.0133340	        2760
+partition	  256	   0.0237750	       12121
+sort then part	  256	   0.0129190	        2620
+sorted  	  256	   0.0126040	        2613
+brute force	  512	   0.1692630	       92438
+part then sort	  512	   0.0288310	        6137
+partition	  512	   0.0735450	       38985
+sort then part	  512	   0.0277010	        5888
+sorted  	  512	   0.0272050	        5880
+brute force	 1024	   0.8514060	      468227
+part then sort	 1024	   0.0626890	       13554
+partition	 1024	   0.3629130	      196963
+sort then part	 1024	   0.0610290	       13254
+sorted  	 1024	   0.0602630	       13245
+brute force	 2048	   2.9571070	     1628154
+part then sort	 2048	   0.1360170	       29402
+partition	 2048	   1.4218970	      779846
+sort then part	 2048	   0.1318370	       28929
+sorted  	 2048	   0.1306470	       28920
+brute force	 4096	  10.0466970	     5539032
+part then sort	 4096	   0.2906810	       63492
+partition	 4096	   4.3122700	     2370888
+sort then part	 4096	   0.2813770	       62605
+sorted  	 4096	   0.2797450	       62593
+brute force	 8192	  41.4529430	    22880274
+part then sort	 8192	   0.6202420	      137346
+partition	 8192	  16.6956270	     9198017
+sort then part	 8192	   0.6052750	      135193
+sorted  	 8192	   0.6031450	      135181
+brute force	16384	 160.9824200	    88676067
+part then sort	16384	   1.3330890	      294842
+partition	16384	  79.8241470	    43949496
+sort then part	16384	   1.2923650	      290152
+sorted  	16384	   1.2932050	      290139
+brute force	32768	 611.2985200	   336536417
+part then sort	32768	   2.8295100	      626647
+partition	32768	 289.9873840	   159532514
+sort then part	32768	   2.7502030	      616234
+sorted  	32768	   2.7508730	      616219
+brute force	65536	2650.2053540	  1458425614
+part then sort	65536	   5.9829940	     1330608
+partition	65536	1003.0842000	   551760421
+sort then part	65536	   5.8368080	     1313017
+sorted  	65536	   5.8318220	     1313002
