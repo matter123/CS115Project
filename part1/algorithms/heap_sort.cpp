@@ -9,11 +9,11 @@ void heapify(int i, vector<int> &Arr, SortAlgorithm::Compare cmp) {
 	int left = 2*i;
 	int right = left +1;
 	int largest = i;
-	if (left <= size && cmp(Arr.at(left), Arr.at(largest))) {
+	if (left <= size && !cmp(Arr.at(left),Arr.at(largest))) {
 		largest = left;
 	}
 
-	if (right <= size && cmp(Arr.at(right), Arr.at(largest))) {
+	if (right <= size && !cmp(Arr.at(right), Arr.at(largest))) {
 		largest = right;
 	}
 	if (largest != i) {
@@ -24,15 +24,9 @@ void heapify(int i, vector<int> &Arr, SortAlgorithm::Compare cmp) {
 	}
 }
 
-/*void buildHeap(vector<int> arr) {
-	Arr = arr;
-	size = Arr.size()-1;
-	for (size_t i = Arr.size()/2; i >= 1; i--) {
-		heapify(i);
-	}
-}*/
+void heapSort(vector<int> &Arr, SortAlgorithm::Compare cmp) {	
+	Arr.insert (Arr.begin(), 0);
 
-void heapSort(vector<int> &Arr, SortAlgorithm::Compare cmp) {
 	size = Arr.size()-1;
 	for (size_t i = Arr.size()/2; i >= 1; i--) {
 		heapify(i, Arr, cmp);
@@ -44,5 +38,8 @@ void heapSort(vector<int> &Arr, SortAlgorithm::Compare cmp) {
 		size--;
 		heapify(1, Arr, cmp);
 	}
+		Arr.erase (Arr.begin());
+
 }
-//SortAlgorithm HeapSort{"heap sort", heapSort};
+
+SortAlgorithm HeapSort{"heap sort", heapSort};

@@ -33,4 +33,4 @@ void mergeSort(vector<int> &vec, SortAlgorithm::Compare cmp) {
 	}
 }
 
-// SortAlgorithm MergeSort{"merge sort", mergeSort};
+ SortAlgorithm MergeSort{"merge sort", mergeSort};

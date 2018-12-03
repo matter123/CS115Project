@@ -18,4 +18,4 @@ void insertionSort(vector<int> &list, SortAlgorithm::Compare cmp) {
 	}
 }
 
-// SortAlgorithm InsertionSort{"insertion sort", insertionSort};
+ SortAlgorithm InsertionSort{"insertion sort", insertionSort};
