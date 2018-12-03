@@ -3,8 +3,8 @@
 #include "../sort_algo.h"
 
 void heapify(int i, std::vector<int> &Arr, size_t size, SortAlgorithm::Compare cmp) {
-	int left = ( 2 * i )+1;
-	int right = left + 2;
+	int left = 2 * i ;
+	int right = left +1 ;
 	int largest = i;
 	if(left <= size && !cmp(Arr.at(left), Arr.at(largest))) { largest = left; }
 
@@ -18,7 +18,7 @@ void heapify(int i, std::vector<int> &Arr, size_t size, SortAlgorithm::Compare c
 }
 
 void heapSort(std::vector<int> &Arr, SortAlgorithm::Compare cmp) {
-	//Arr.insert(Arr.begin(), 0);
+	Arr.insert(Arr.begin(), 0);
 
 	auto size = Arr.size() - 1;
 	for(size_t i = Arr.size() / 2; i >= 1; i--) { heapify(i, Arr, size, cmp); }
@@ -29,7 +29,7 @@ void heapSort(std::vector<int> &Arr, SortAlgorithm::Compare cmp) {
 		size--;
 		heapify(1, Arr, size, cmp);
 	}
-	//Arr.erase(Arr.begin());
+	Arr.erase(Arr.begin());
 }
 
 SortAlgorithm HeapSort{"heap sort", heapSort};
