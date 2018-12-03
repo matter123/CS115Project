@@ -1,4 +1,4 @@
-#include <cassert>
+	#include <cassert>
 #include <algorithm>
 #include <iostream>
 #include <utility>
@@ -35,6 +35,11 @@ RandomIt first(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 	return first;
 }
 
+template<class RandomIt>
+RandomIt randquickSort( RandomIt first, RandomIt last, SortAlgorithm::Compare cmp){
+	return first + rand() % (last-first);
+}
+
 template <class RandomIt, class PivotFunc>
 void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp,
                    PivotFunc pivotfunc) {
@@ -49,17 +54,23 @@ void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp,
 	quickSortImpl(first, pivot, cmp, pivotfunc);
 	quickSortImpl(pivot + 1, last, cmp, pivotfunc);
 }
-/*
+
 void quickSortMoT(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
       quickSortImpl(arr.begin(), arr.end() - 1, cmp,
                     medianOfThree<typename std::vector<int>::iterator>);
 }
 
-SortAlgorithm QuickSortMot{"quick sort MoT", quickSortMoT};*/
+SortAlgorithm QuickSortMot{"quick sort MoT", quickSortMoT};
 
 void quickSortFirst(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	quickSortImpl(arr.begin(), arr.end() - 1, cmp,
 	              first<typename std::vector<int>::iterator>);
 }
 
-SortAlgorithm QuickSortFirst{"quick sort first", quickSortFirst};
+SortAlgorithm QuickSortFirst{"qk sort first", quickSortFirst};
+
+void quickSortRand(std::vector<int>& arr, SortAlgorithm::Compare cmp){
+	quickSortImpl(arr.begin(), arr.end() -1, cmp,
+	 randquickSort<typename std::vector<int>::iterator>);
+}
+SortAlgorithm QuickSortRand("qk srt rand", quickSortRand);

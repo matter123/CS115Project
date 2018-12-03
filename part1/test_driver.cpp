@@ -26,8 +26,7 @@ void TestDriver::sortAlgorithms() {
 void TestDriver::randomNumber(std::vector<int> &arr, size_t size,
                               SortAlgorithm::Compare c) {
 	std::mt19937 rand{(unsigned int)time(nullptr)};
-	std::uniform_int_distribution<int> uid{std::numeric_limits<int>::min(),
-	                                       std::numeric_limits<int>::max()};
+	std::uniform_int_distribution<int> uid(0,size-1);
 	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
 }
 void TestDriver::partiallySorted(std::vector<int> &arr, size_t size,
