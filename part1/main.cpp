@@ -24,11 +24,11 @@ void runTests(Generator g) {
 
 int main(int argc, char const *argv[]) {
 	TestDriver::sortAlgorithms();
-	// std::cout << "unsorted vector" << std::endl;
-	// runTests(TestDriver::randomNumber);
+	std::cout << "unsorted vector" << std::endl;
+	runTests(TestDriver::randomNumber);
 	std::cout << "reverse sorted vector" << std::endl;
-	// runTests(TestDriver::reverseSorted);
-	// std::cout << "sorted vector" << std::endl;
+	runTests(TestDriver::reverseSorted);
+	std::cout << "sorted vector" << std::endl;
 	runTests(TestDriver::sorted);
 	return 0;
 }
