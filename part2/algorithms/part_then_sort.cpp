@@ -1,5 +1,5 @@
+#include <algorithm>
 #include <utility>
-#include<algorithm>
 #include "../in_set.h"
 bool partThenSort(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	using std::swap;
@@ -68,4 +68,4 @@ bool partThenSort(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm PartThenSort{"part then sort", partThenSort};
+// InSetAlgorithm PartThenSort{"part then sort", partThenSort};

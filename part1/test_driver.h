@@ -17,7 +17,7 @@ class TestDriver {
 	static void testAlgorithms(double arraySizeExp, size_t trials, Generator g);
 	// number source
 	static void randomNumber(std::vector<int> &, size_t, SortAlgorithm::Compare c);
-	static void partiallySorted(std::vector<int> &, size_t, SortAlgorithm::Compare c);
+	static void reverseSorted(std::vector<int> &, size_t, SortAlgorithm::Compare c);
 	static void sorted(std::vector<int> &, size_t, SortAlgorithm::Compare c);
 };
 

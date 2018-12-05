@@ -19,5 +19,10 @@ int main(int argc, char const *argv[]) {
 	TestDriver::testAlgorithms(0xE, 20);  // N=2^14
 	TestDriver::testAlgorithms(0xF, 20);  // N=2^15
 	TestDriver::testAlgorithms(0x10, 20); // N=2^16
+	TestDriver::testAlgorithms(0x11, 20); // N=2^16
+	TestDriver::testAlgorithms(0x12, 20); // N=2^16
+	TestDriver::testAlgorithms(0x13, 20); // N=2^16
+	TestDriver::testAlgorithms(0x14, 20); // N=2^16
+	TestDriver::testAlgorithms(0x15, 20); // N=2^16
 	return 0;
 }

@@ -3,8 +3,8 @@
 #include "../sort_algo.h"
 
 void heapify(int i, std::vector<int> &Arr, size_t size, SortAlgorithm::Compare cmp) {
-	int left = 2 * i ;
-	int right = left +1 ;
+	int left = 2 * i;
+	int right = left + 1;
 	int largest = i;
 	if(left <= size && !cmp(Arr.at(left), Arr.at(largest))) { largest = left; }
 

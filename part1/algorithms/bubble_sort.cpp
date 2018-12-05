@@ -1,3 +1,4 @@
+#include <iostream>
 #include <utility>
 #include "../sort_algo.h"
 
@@ -8,7 +9,8 @@ void bubbleSort(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	do {
 		flag = false;
 		for(size_t s = 1; s < end; s++) {
-			if(!cmp(arr.at(s - 1), arr.at(s))) {
+			if(cmp(arr.at(s), arr.at(s - 1))) {
+				if(arr.at(s - 1) == arr.at(s)) { std::cerr << "duplicate"; }
 				swap(arr.at(s - 1), arr.at(s));
 				flag = true;
 			}
@@ -17,4 +19,4 @@ void bubbleSort(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	} while(flag);
 }
 
- SortAlgorithm BubbleSort{"bubble sort", bubbleSort};
+// SortAlgorithm BubbleSort{"bubble sort", bubbleSort};

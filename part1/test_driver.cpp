@@ -26,14 +26,13 @@ void TestDriver::sortAlgorithms() {
 void TestDriver::randomNumber(std::vector<int> &arr, size_t size,
                               SortAlgorithm::Compare c) {
 	std::mt19937 rand{(unsigned int)time(nullptr)};
-	std::uniform_int_distribution<int> uid(0,size-1);
+	std::uniform_int_distribution<int> uid(0, size - 1);
 	for(size_t s = 0; s < size; s++) { arr.push_back(uid(rand)); }
 }
-void TestDriver::partiallySorted(std::vector<int> &arr, size_t size,
-                                 SortAlgorithm::Compare c) {
-	using std::swap;
-	TestDriver::randomNumber(arr, size, c);
-	std::sort(arr.begin(), arr.begin() + size / 2, c);
+void TestDriver::reverseSorted(std::vector<int> &arr, size_t size,
+                               SortAlgorithm::Compare c) {
+	TestDriver::sorted(arr, size, c);
+	std::reverse(arr.begin(), arr.end());
 }
 
 void TestDriver::sorted(std::vector<int> &arr, size_t size, SortAlgorithm::Compare c) {

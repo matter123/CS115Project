@@ -21,4 +21,4 @@ bool bruteForce(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-InSetAlgorithm BruteForce{"brute force", bruteForce};
+// InSetAlgorithm BruteForce{"brute force", bruteForce};

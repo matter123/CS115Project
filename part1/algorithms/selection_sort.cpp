@@ -12,4 +12,4 @@ void selectionSort(vector<int> &list, SortAlgorithm::Compare cmp) {
 		swap(list.at(i), list.at(temp2));
 	}
 }
- SortAlgorithm SelectionSort{"selection sort", selectionSort};
+// SortAlgorithm SelectionSort{"selection sort", selectionSort};
