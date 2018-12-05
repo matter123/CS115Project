@@ -6,6 +6,9 @@
 #include <iostream>
 #include <iterator>
 
+// Basically identical to SortAlgorithm from part1, but does not check for accuracy as it
+// cannot know the answer, instead TestDriver looks for all algorithms to return the same
+// result
 InSetAlgorithm::InSetAlgorithm(std::string _name, FunctionType func)
     : name(_name), function(func) {
 	// register algorithm

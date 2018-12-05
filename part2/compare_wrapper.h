@@ -5,6 +5,8 @@
 #include <functional>
 #include <utility>
 
+// provides a countable three way comparison functor
+// called ComparisonWrapper even though it does not wrap for parity with part1
 template <class T = int>
 class CompareWrapper {
 	size_t comparisons{0};

@@ -5,6 +5,8 @@
 #include <functional>
 #include <utility>
 
+
+// wraps a comparsions functor and counts the number of times a comparisons is called
 template <class T = int>
 class CompareWrapper {
 	size_t comparisons;

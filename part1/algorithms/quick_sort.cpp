@@ -20,6 +20,8 @@ RandomIt quickSortPartition(RandomIt first, RandomIt last, int pivot,
 	}
 }
 
+// pivot selection methods
+// Median of three
 template <class RandomIt>
 RandomIt medianOfThree(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 	using std::swap;
@@ -30,16 +32,20 @@ RandomIt medianOfThree(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp
 	return last;
 }
 
+// use first element
 template <class RandomIt>
 RandomIt first(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 	return first;
 }
 
+// use a random element
 template <class RandomIt>
 RandomIt randquickSort(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp) {
 	return first + rand() % (last - first);
 }
 
+// first and last are inclusive, PivotFunc is used to make the choice of pivot
+// pluggable
 template <class RandomIt, class PivotFunc>
 void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp,
                    PivotFunc pivotfunc) {
@@ -55,22 +61,21 @@ void quickSortImpl(RandomIt first, RandomIt last, SortAlgorithm::Compare cmp,
 	quickSortImpl(pivot + 1, last, cmp, pivotfunc);
 }
 
+// create a caller function and SortAlgorithm object for each of three pivot functions
 void quickSortMoT(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	quickSortImpl(arr.begin(), arr.end() - 1, cmp,
 	              medianOfThree<typename std::vector<int>::iterator>);
 }
-
-// SortAlgorithm QuickSortMot{"qsort MoT", quickSortMoT};
+SortAlgorithm QuickSortMot{"qsort MoT", quickSortMoT};
 
 void quickSortFirst(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	quickSortImpl(arr.begin(), arr.end() - 1, cmp,
 	              first<typename std::vector<int>::iterator>);
 }
-
-// SortAlgorithm QuickSortFirst{"qsort first", quickSortFirst};
+SortAlgorithm QuickSortFirst{"qsort first", quickSortFirst};
 
 void quickSortRand(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	quickSortImpl(arr.begin(), arr.end() - 1, cmp,
 	              randquickSort<typename std::vector<int>::iterator>);
 }
-// SortAlgorithm QuickSortRand("qsort random", quickSortRand);
+SortAlgorithm QuickSortRand("qsort random", quickSortRand);

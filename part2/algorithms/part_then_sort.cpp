@@ -68,4 +68,4 @@ bool partThenSort(std::vector<int> &arr, int val, InSetAlgorithm::Compare cmp) {
 	return false;
 }
 
-// InSetAlgorithm PartThenSort{"part then sort", partThenSort};
+InSetAlgorithm PartThenSort{"part then sort", partThenSort};
