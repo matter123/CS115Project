@@ -19,4 +19,4 @@ void bubbleSort(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	} while(flag);
 }
 
-// SortAlgorithm BubbleSort{"bubble sort", bubbleSort};
+ SortAlgorithm BubbleSort{"bubble sort", bubbleSort};

@@ -9,7 +9,9 @@ void insertionSort(vector<int> &list, SortAlgorithm::Compare cmp) {
 	for(size_t i = 1; i < list.size(); i++) {
 		key = list.at(i);
 		j = i - 1;
-
+		/* Move elements of list[0..i-1], that are 
+          bigger than key, to  position right 
+		  infront of their current position */
 		while(j >= 0 && !cmp(list.at(j), key)) {
 			list.at(j + 1) = list.at(j);
 			j--;
@@ -18,4 +20,4 @@ void insertionSort(vector<int> &list, SortAlgorithm::Compare cmp) {
 	}
 }
 
-// SortAlgorithm InsertionSort{"insertion sort", insertionSort};
+ SortAlgorithm InsertionSort{"insertion sort", insertionSort};

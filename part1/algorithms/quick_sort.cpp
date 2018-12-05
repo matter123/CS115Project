@@ -60,17 +60,17 @@ void quickSortMoT(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	              medianOfThree<typename std::vector<int>::iterator>);
 }
 
-// SortAlgorithm QuickSortMot{"qsort MoT", quickSortMoT};
+ SortAlgorithm QuickSortMot{"qsort MoT", quickSortMoT};
 
 void quickSortFirst(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	quickSortImpl(arr.begin(), arr.end() - 1, cmp,
 	              first<typename std::vector<int>::iterator>);
 }
 
-// SortAlgorithm QuickSortFirst{"qsort first", quickSortFirst};
+ SortAlgorithm QuickSortFirst{"qsort first", quickSortFirst};
 
 void quickSortRand(std::vector<int> &arr, SortAlgorithm::Compare cmp) {
 	quickSortImpl(arr.begin(), arr.end() - 1, cmp,
 	              randquickSort<typename std::vector<int>::iterator>);
 }
-// SortAlgorithm QuickSortRand("qsort random", quickSortRand);
+ SortAlgorithm QuickSortRand("qsort random", quickSortRand);
