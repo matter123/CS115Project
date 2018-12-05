@@ -1,0 +1,18 @@
+# CSCI 115 Group Project (Part1) #
+
+The code for this part of the project provides timing data for the 8 sorting algorithms
+(bubble sort, heap sort, insertion sort, merge sort, qsort first, qsort random, qsort
+Median of Three, and selection sort) with three different types of input data (randomized,
+sorted, reverse sorted), across a variety of input data sizes (2^0 - 2^16)
+
+## How to compile ##
+
+### requirements ###
+  - gcc 5.4.0 or later
+
+### instructions ##
+  1. run `make`
+
+## How to run ##
+  1. Compile the program
+  2. execute `./algorithm_test`

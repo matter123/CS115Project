@@ -1,0 +1,17 @@
+# CSCI 115 Group Project (Part2) #
+
+The code for this part of the project provides timing data several algorithms to determine
+if a set `S` contains two numbers that sum to some sum `X`. There is the brute force
+method, a Sorted method, and several other algorithms that try to be faster than sorted.
+
+## How to compile ##
+
+### requirements ###
+  - gcc 5.4.0 or later
+
+### instructions ##
+  1. run `make`
+
+## How to run ##
+  1. Compile the program
+  2. execute `./in_set`
